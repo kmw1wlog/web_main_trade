@@ -29,14 +29,14 @@ export function AppBetaSection() {
   return (
     <section id="app-beta" className="shell section">
       <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-        <div className="card p-6 sm:p-8">
-          <div className="text-sm font-semibold text-accentSoft">
-            웹에서 쓰던 기능을 앱으로 가져갑니다
+        <div className="card-paper p-6 sm:p-8">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-goldDeep">
+            앱 베타
           </div>
-          <h2 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
+          <h2 className="mt-3 text-2xl font-semibold text-paperText sm:text-3xl">
             지표 확인과 알림 설정을 앱 경험으로 확장합니다
           </h2>
-          <p className="mt-4 text-sm leading-7 text-muted sm:text-base">
+          <p className="mt-4 text-sm leading-7 text-paperMuted sm:text-base">
             지표 확인, 알림 설정, 자연어 조건식, 모의투자 기록을 앱으로 옮기는
             베타를 준비 중입니다.
           </p>
@@ -48,13 +48,16 @@ export function AppBetaSection() {
               "기능 투표권",
               "모의투자 대회 우선 안내",
             ].map((item) => (
-              <div key={item} className="card-soft px-4 py-3 text-sm text-text">
+              <div
+                key={item}
+                className="rounded-[22px] border border-gold/18 bg-ivory px-4 py-3 text-sm text-paperText"
+              >
                 {item}
               </div>
             ))}
           </div>
           {tempCode ? (
-            <div className="mt-6 rounded-2xl border border-accent/30 bg-accent/10 px-4 py-3 text-sm text-accentSoft">
+            <div className="mt-6 rounded-[22px] border border-gold/30 bg-navy px-4 py-3 text-sm font-semibold text-goldSoft">
               임시 베타 대기번호: {tempCode}
             </div>
           ) : null}

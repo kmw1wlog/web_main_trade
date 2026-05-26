@@ -36,11 +36,9 @@ export function ToolDemoSection({
   return (
     <section id="tool-demo" className="shell section">
       <div className="mb-6 max-w-3xl">
-        <div className="text-sm font-semibold text-accentSoft">
-          오늘 바로 눌러볼 수 있는 웹 지표 체험
-        </div>
+        <div className="eyebrow">웹 데이터랩</div>
         <h2 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
-          관찰 도구를 한 번씩 눌러보고 흐름을 익혀보세요
+          반복 확인이 필요한 데이터를 한 화면에 모았습니다
         </h2>
         <p className="mt-4 text-sm leading-7 text-muted sm:text-base">
           시장을 예측해주는 마법 도구가 아니라, 반복해서 확인해야 하는 정보를
@@ -72,13 +70,13 @@ export function ToolDemoSection({
               <path
                 d="M0 130 L30 120 L60 126 L90 112 L120 104 L150 110 L180 95 L210 88 L240 92 L270 74 L300 64 L330 70 L360 48"
                 fill="none"
-                stroke="#4ade80"
+                stroke="#D6B464"
                 strokeWidth="4"
                 strokeLinecap="round"
               />
               <path
                 d="M0 140 L0 170 L360 170 L360 80"
-                fill="rgba(74, 222, 128, 0.08)"
+                fill="rgba(214, 180, 100, 0.10)"
               />
             </svg>
             {showCvd ? (

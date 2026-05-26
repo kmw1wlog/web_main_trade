@@ -4,14 +4,14 @@ export function PreorderSection() {
   return (
     <section id="preorder" className="shell section">
       <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
-        <div className="card p-6 sm:p-8">
-          <div className="text-sm font-semibold text-accentSoft">
+        <div className="card-paper p-6 sm:p-8">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-goldDeep">
             정식 출시 전 먼저 신청하세요
           </div>
-          <h2 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
-            강의와 도구를 결제 전 단계에서 먼저 예약할 수 있습니다
+          <h2 className="mt-3 text-2xl font-semibold text-paperText sm:text-3xl">
+            정식 출시 전 혜택을 먼저 확보하세요
           </h2>
-          <p className="mt-4 text-sm leading-7 text-muted sm:text-base">
+          <p className="mt-4 text-sm leading-7 text-paperMuted sm:text-base">
             조건식, 모의투자, 지표 사용법을 체계적으로 배우고 싶은 사람을 위한
             강의와 도구를 준비 중입니다.
           </p>
@@ -23,20 +23,23 @@ export function PreorderSection() {
               "앱 구독권",
               "트레이딩뷰/조건식 변환 베타",
             ].map((item) => (
-              <div key={item} className="card-soft px-4 py-3 text-sm text-text">
+              <div
+                key={item}
+                className="rounded-[22px] border border-gold/18 bg-ivory px-4 py-3 text-sm text-paperText"
+              >
                 {item}
               </div>
             ))}
           </div>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            <div className="rounded-2xl border border-accent/30 bg-accent/10 px-4 py-3 text-sm text-accentSoft">
+            <div className="rounded-[22px] border border-gold/30 bg-navy px-4 py-3 text-sm font-semibold text-goldSoft">
               1차 얼리버드: 79,000원 예정
             </div>
-            <div className="rounded-2xl border border-line bg-ink/60 px-4 py-3 text-sm text-text">
+            <div className="rounded-[22px] border border-gold/18 bg-ivory px-4 py-3 text-sm text-paperText">
               정식 출시가: 159,000원 예정
             </div>
           </div>
-          <div className="mt-6 rounded-2xl border border-line bg-ink/60 p-4 text-sm leading-7 text-muted">
+          <div className="mt-6 rounded-[22px] border border-gold/18 bg-white/70 p-4 text-sm leading-7 text-paperMuted">
             사전예약은 결제 전 알림 신청 단계입니다. 실제 결제 페이지 오픈 시
             최종 가격, 구성, 환불 조건을 다시 안내합니다.
           </div>

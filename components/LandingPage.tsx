@@ -14,6 +14,7 @@ import {
 } from "@/lib/coupon";
 import type { LeadPayload } from "@/lib/leadSchema";
 import { readJsonStorage, writeJsonStorage } from "@/lib/utils";
+import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { BenefitGrid } from "@/components/BenefitGrid";
 import { CouponBox } from "@/components/CouponBox";
@@ -151,6 +152,7 @@ export function LandingPage() {
 
   return (
     <main className="pb-16">
+      <Header onNavigate={handleNavigate} />
       {coupon && !isExpired ? (
         <div className="sticky top-0 z-30 border-b border-line bg-ink/90 backdrop-blur">
           <div className="shell flex flex-col gap-2 py-3 text-sm sm:flex-row sm:items-center sm:justify-between">
@@ -173,6 +175,9 @@ export function LandingPage() {
         onToolClick={() => handleNavigate("tool-demo", "hero_tool_click")}
       />
       <BenefitGrid onNavigate={handleNavigate} />
+      <div id="guide">
+        <GuideSection onNavigate={handleNavigate} />
+      </div>
       <CouponBox
         coupon={coupon}
         remainingText={remainingText}
@@ -180,11 +185,6 @@ export function LandingPage() {
         onCouponClaim={handleCouponClaim}
         onResetCoupon={handleResetCoupon}
       />
-      <div id="guide">
-        <GuideSection
-          onCouponClick={() => handleNavigate("coupon", "guide_coupon_cta_click")}
-        />
-      </div>
       <ToolDemoSection
         coupon={coupon}
         onUseCouponAction={handleUseCouponAction}
@@ -198,7 +198,7 @@ export function LandingPage() {
       <PremiumSection />
       <AppBetaSection />
       <PreorderSection />
-      <CommunitySection />
+      <CommunitySection onNavigate={handleNavigate} />
       <Disclaimer />
     </main>
   );
