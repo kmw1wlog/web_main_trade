@@ -1,17 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@/lib/analytics";
 import type { CouponState } from "@/lib/coupon";
 
 type ToolDemoSectionProps = {
   coupon: CouponState | null;
   onUseCouponAction: (eventName: string, label: string) => boolean;
+  onNavigate: (target: string, eventName: string, label?: string) => void;
   noCouponNotice: string;
 };
 
 export function ToolDemoSection({
   coupon,
   onUseCouponAction,
+  onNavigate,
   noCouponNotice,
 }: ToolDemoSectionProps) {
   const [showCvd, setShowCvd] = useState(false);
@@ -28,6 +31,7 @@ export function ToolDemoSection({
     label: string,
     onSuccess: () => void,
   ) {
+    track("tool_demo_click", { eventName, label });
     if (onUseCouponAction(eventName, label)) {
       onSuccess();
     }
@@ -38,17 +42,23 @@ export function ToolDemoSection({
       <div className="mb-6 max-w-3xl">
         <div className="eyebrow">웹 데이터랩</div>
         <h2 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
-          반복 확인이 필요한 데이터를 한 화면에 모았습니다
+          무료 쿠폰으로 먼저 눌러볼 수 있는 기능
         </h2>
         <p className="mt-4 text-sm leading-7 text-muted sm:text-base">
-          시장을 예측해주는 마법 도구가 아니라, 반복해서 확인해야 하는 정보를
-          한 곳에 모아주는 관찰 도구입니다.
+          실제 주문이나 투자 신호가 아니라, 지표와 조건식을 이해하기 위한
+          데모입니다.
         </p>
       </div>
 
       {!coupon ? (
-        <div className="mb-6 rounded-2xl border border-warn/30 bg-warn/10 px-4 py-3 text-sm text-yellow-100">
-          무료 쿠폰을 먼저 받아두세요. 데모 액션은 쿠폰 1회씩 차감됩니다.
+        <div className="mb-6 flex flex-col gap-3 rounded-2xl border border-warn/30 bg-warn/10 px-4 py-4 text-sm text-yellow-100 sm:flex-row sm:items-center sm:justify-between">
+          <span>무료 쿠폰을 먼저 받아두세요. 데모 액션은 쿠폰 1회씩 차감됩니다.</span>
+          <button
+            className="btn-primary px-4 py-2"
+            onClick={() => onNavigate("coupon", "coupon_claim_click", "tool-demo-banner")}
+          >
+            쿠폰 먼저 받기
+          </button>
         </div>
       ) : null}
 
@@ -94,7 +104,7 @@ export function ToolDemoSection({
               )
             }
           >
-            CVD 예시 보기
+            CVD 보기
           </button>
         </div>
 
@@ -140,7 +150,7 @@ export function ToolDemoSection({
               )
             }
           >
-            거래량 급증 예시 보기
+            거래량 보기
           </button>
         </div>
 
@@ -194,7 +204,7 @@ export function ToolDemoSection({
               )
             }
           >
-            알림 설정 눌러보기
+            알림 눌러보기
           </button>
         </div>
 
@@ -222,7 +232,7 @@ export function ToolDemoSection({
               )
             }
           >
-            조건식 예시 만들기
+            조건식 만들기
           </button>
           {conditionResult ? (
             <div className="mt-4 rounded-2xl border border-accent/20 bg-accent/10 px-4 py-3 text-sm text-text">
@@ -271,7 +281,7 @@ export function ToolDemoSection({
               )
             }
           >
-            모의투자 설정 예시 보기
+            모의투자 보기
           </button>
         </div>
       </div>

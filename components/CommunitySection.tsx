@@ -3,8 +3,8 @@
 import { track } from "@/lib/analytics";
 import { FeatureIcon } from "@/components/FeatureIcon";
 
-const telegramUrl = process.env.NEXT_PUBLIC_TELEGRAM_URL || "#coming-soon";
-const cafeUrl = process.env.NEXT_PUBLIC_CAFE_URL || "#coming-soon";
+const telegramUrl = process.env.NEXT_PUBLIC_TELEGRAM_URL || "#community";
+const cafeUrl = process.env.NEXT_PUBLIC_CAFE_URL || "#community";
 
 type CommunitySectionProps = {
   onNavigate: (target: string, eventName: string, label?: string) => void;
@@ -23,46 +23,52 @@ export function CommunitySection({ onNavigate }: CommunitySectionProps) {
         <a
           className="card p-6 transition hover:-translate-y-1 hover:border-gold/40"
           href={telegramUrl}
-          onClick={() => track("telegram_click", { href: telegramUrl })}
+          onClick={() => {
+            track("community_click", { channel: "telegram" });
+            track("telegram_click", { href: telegramUrl });
+          }}
         >
           <div className="text-gold">
             <FeatureIcon name="mobile" />
           </div>
           <div className="mt-4 text-sm font-semibold text-accentSoft">텔레그램</div>
-          <h3 className="mt-3 text-xl font-semibold text-white">텔레그램 입장</h3>
+          <h3 className="mt-3 text-xl font-semibold text-white">텔레그램 알림 받기</h3>
           <p className="mt-3 text-sm leading-7 text-muted">
             쿠폰 만료, 새 기능, 무료 자료, 베타 모집 소식을 빠르게 안내합니다.
           </p>
-          <div className="mt-5 text-sm font-semibold text-accentSoft">바로 가기 →</div>
+          <div className="mt-5 text-sm font-semibold text-accentSoft">텔레그램 알림 받기 →</div>
         </a>
         <a
           className="card p-6 transition hover:-translate-y-1 hover:border-gold/40"
           href={cafeUrl}
-          onClick={() => track("cafe_click", { href: cafeUrl })}
+          onClick={() => {
+            track("community_click", { channel: "cafe" });
+            track("cafe_click", { href: cafeUrl });
+          }}
         >
           <div className="text-gold">
             <FeatureIcon name="library" />
           </div>
           <div className="mt-4 text-sm font-semibold text-accentSoft">카페</div>
-          <h3 className="mt-3 text-xl font-semibold text-white">카페 가입</h3>
+          <h3 className="mt-3 text-xl font-semibold text-white">카페 자료실 보기</h3>
           <p className="mt-3 text-sm leading-7 text-muted">
             자료실, 사용 후기, 질문, 공지, 학습 로드맵을 모아둡니다.
           </p>
-          <div className="mt-5 text-sm font-semibold text-accentSoft">바로 가기 →</div>
+          <div className="mt-5 text-sm font-semibold text-accentSoft">카페 자료실 보기 →</div>
         </a>
         <button
           className="card p-6 text-left transition hover:-translate-y-1 hover:border-gold/40"
-          onClick={() => onNavigate("coming-soon", "partner_inquiry_click", "제휴문의")}
+          onClick={() => onNavigate("materials", "community_click", "업데이트 알림 신청")}
         >
           <div className="text-gold">
-            <FeatureIcon name="calendar" />
+            <FeatureIcon name="premium" />
           </div>
-          <div className="mt-4 text-sm font-semibold text-accentSoft">제휴문의</div>
-          <h3 className="mt-3 text-xl font-semibold text-white">공동 캠페인 제안</h3>
+          <div className="mt-4 text-sm font-semibold text-accentSoft">이메일/SMS</div>
+          <h3 className="mt-3 text-xl font-semibold text-white">업데이트 알림 신청</h3>
           <p className="mt-3 text-sm leading-7 text-muted">
-            채널 운영자, 교육 서비스, 커뮤니티 협업 제안을 위한 문의 창구입니다.
+            쿠폰 만료, 앱 출시, 사전예약 알림을 수신 동의자에게만 안내합니다.
           </p>
-          <div className="mt-5 text-sm font-semibold text-accentSoft">문의 열기 →</div>
+          <div className="mt-5 text-sm font-semibold text-accentSoft">업데이트 알림 신청 →</div>
         </button>
       </div>
     </section>

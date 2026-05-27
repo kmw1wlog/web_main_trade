@@ -15,8 +15,7 @@ import {
 import type { LeadPayload } from "@/lib/leadSchema";
 import { readJsonStorage, writeJsonStorage } from "@/lib/utils";
 import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
-import { BenefitGrid } from "@/components/BenefitGrid";
+import { FirstFoldHub } from "@/components/FirstFoldHub";
 import { CouponBox } from "@/components/CouponBox";
 import { GuideSection } from "@/components/GuideSection";
 import { ToolDemoSection } from "@/components/ToolDemoSection";
@@ -26,6 +25,7 @@ import { PremiumSection } from "@/components/PremiumSection";
 import { AppBetaSection } from "@/components/AppBetaSection";
 import { PreorderSection } from "@/components/PreorderSection";
 import { CommunitySection } from "@/components/CommunitySection";
+import { PartnerInquirySection } from "@/components/PartnerInquirySection";
 import { Disclaimer } from "@/components/Disclaimer";
 
 const MATERIALS_STORAGE_KEY = "investment_tool_materials";
@@ -170,11 +170,7 @@ export function LandingPage() {
         </div>
       ) : null}
 
-      <Hero
-        onCouponClick={() => handleNavigate("coupon", "hero_coupon_click")}
-        onToolClick={() => handleNavigate("tool-demo", "hero_tool_click")}
-      />
-      <BenefitGrid onNavigate={handleNavigate} />
+      <FirstFoldHub onNavigate={handleNavigate} />
       <div id="guide">
         <GuideSection onNavigate={handleNavigate} />
       </div>
@@ -188,6 +184,7 @@ export function LandingPage() {
       <ToolDemoSection
         coupon={coupon}
         onUseCouponAction={handleUseCouponAction}
+        onNavigate={handleNavigate}
         noCouponNotice={noCouponNotice}
       />
       <MaterialsSection
@@ -199,6 +196,7 @@ export function LandingPage() {
       <AppBetaSection />
       <PreorderSection />
       <CommunitySection onNavigate={handleNavigate} />
+      <PartnerInquirySection />
       <Disclaimer />
     </main>
   );

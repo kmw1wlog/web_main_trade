@@ -28,11 +28,11 @@ export function CouponBox({
             쿠폰 보관함
           </div>
           <h2 className="mt-3 text-2xl font-semibold text-paperText sm:text-3xl">
-            3일 체험권을 보관해두세요.
+            무료 쿠폰 보관함
           </h2>
           <p className="mt-3 text-sm leading-7 text-paperMuted sm:text-base">
-            지금 결제하지 않아도 됩니다. 무료 10회권을 먼저 담아두고, 필요할
-            때 지표와 자료를 확인하세요.
+            3일 동안 10회까지 데모 기능을 눌러볼 수 있습니다. 지금 결제하지
+            않아도 됩니다.
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             <StatBadge
@@ -54,8 +54,8 @@ export function CouponBox({
                 <div>이용 가능 횟수: {coupon.usesRemaining}</div>
                 <div className="mt-3">
                   {coupon.marketingConsent
-                    ? "수신 동의자에게 오픈/만료 안내를 우선 제공합니다."
-                    : "알림을 받으려면 마케팅 수신 동의가 필요합니다."}
+                    ? "만료 2일 전 알림 예정입니다."
+                    : "마케팅 수신 동의가 없어 만료 알림 대상에는 포함되지 않습니다."}
                 </div>
                 <div className="mt-3 rounded-2xl border border-gold/18 bg-white/75 p-3 text-xs text-paperText">
                   [투자도구 쿠폰] 무료 10회권 만료까지 2일 남았습니다. 오늘은
@@ -122,7 +122,7 @@ export function CouponBox({
               <div className="eyebrow">ACCESS REQUEST</div>
               <h3 className="mt-3 text-xl font-semibold text-white">3일 무료 10회권 받기</h3>
               <p className="mt-3 text-sm leading-7 text-muted">
-                이메일 또는 전화번호 1개만 입력해도 신청할 수 있습니다.
+                이메일 또는 전화번호 중 하나만 입력해도 신청할 수 있습니다.
               </p>
               <div className="mt-6">
                 <LeadForm
